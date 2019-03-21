@@ -43,12 +43,12 @@
 #limitations under the License.
 #
 #
-#Usage :  splunknbox -v[2 3 4 5 6]
-#		v1-2 implied and cannot be changed
-#		-v3	[default] show sub-steps under each host build
-#		-v4	show remote CMD executed in docker container
-#		-v5	more verbosity (debug)
-#		-v6	even more verbosity (debug)
+#Usage :  splunknbox -l [2 3 4 5 6]
+#		l1-2 implied and cannot be changed
+#		-l3	[default] show sub-steps under each host build
+#		-l4	show remote CMD executed in docker container
+#		-l5	more verbosity (debug)
+#		-l6	even more verbosity (debug)
 #################################################################################
 
 #-------------Network stuff --------
