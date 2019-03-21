@@ -531,7 +531,7 @@ _debug_function_inputs  "${FUNCNAME}" "$#" "[$1][$2][$3][$4][$5]" "${FUNCNAME[*]
 # Check that we're in a BASH shell
 if [[ $EUID -eq 0 ]]; then
   echo "This script must NOT be run as root" 1>&2
-  exit 1
+  #exit 1
 fi
 }	#end check_root()
 #---------------------------------------------------------------------------------------------------------
@@ -1954,7 +1954,7 @@ if [ "$containers_count" == 0 ]; then       #nothing created yet!
 elif [ "$containers_count" -gt "0" ]; then
 	#last_ip_used=`docker inspect --format '{{ .HostConfig }}' $(docker ps -aql)|$GREP -o '[0-9]\+[.][0-9]\+[.][0-9]\+[.][0-9]\+'| head -1`
 	#last_ip_used=`docker inspect --format='{{(index (index .NetworkSettings.Ports "8000/tcp") 0).HostIp}}' $(docker ps -aq) 2>/dev/null | sort -u |tail -1`
-	last_ip_used=`docker inspect --format '{{ .HostConfig }}' $(docker ps -aq)| $GREP -o '[0-9]\+[.][0-9]\+[.][0-9]\+[.][0-9]\+ 8000'|cut -d" " -f 1|sort -un|tail -1`
+	last_ip_used=`docker inspect --format '{{ .HostConfig }}' $(docker ps -aq)| $GREP -o '[0-9]\+[.][0-9]\+[.][0-9]\+[.][0-9]\+ 8000'| $GREP $base_ip  | cut -d" " -f 1|sort -un|tail -1`
 
 	if [ -n "$last_ip_used" ]; then
         	last_used_octet4=`echo $last_ip_used |cut -d"." -f4`
